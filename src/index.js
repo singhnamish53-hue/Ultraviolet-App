@@ -9,8 +9,14 @@ import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 
 const app = express();
+// Force the address bar to show your preferred page extension
 app.get('/', (req, res) => {
     res.redirect('/index.html');
+});
+
+// A rule that tricks the browser into showing .svg while loading the proxy layout
+app.get('/index.svg', (req, res) => {
+    res.sendFile(join(publicPath, 'index.html'));
 });
 
 app.use(express.static("./public"));
