@@ -9,7 +9,10 @@ import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 
 const app = express();
-// Load our publicPath first and prioritize it over UV.
+app.get('/', (req, res) => {
+    res.redirect('/index.html');
+});
+
 app.use(express.static("./public"));
 // Load vendor files last.
 // The vendor's uv.config.js won't conflict with our uv.config.js inside the publicPath directory.
